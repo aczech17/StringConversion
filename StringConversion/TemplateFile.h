@@ -10,15 +10,15 @@ class TemplateFile
 	std::string outputName;
 	std::ifstream input;
 	std::ofstream output;
+	bool goodbit;
 	const char templateSign;
 	std::string word;
-	bool inTemplate;
-	std::vector <std::string> replaceableWords;
-	void loadWord();
-	void replace();
+	void loadLine();
+	void replace(int from, int to);
 public:
 	void loadFile();
 	TemplateFile(std::string iN, std::string oN, const char tS = '*');
 	~TemplateFile();
+	bool good();
 };
 #endif
