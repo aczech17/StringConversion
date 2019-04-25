@@ -1,16 +1,15 @@
 #include "TemplateFile.h"
-TemplateFile::TemplateFile(std::string iN, std::string oN, const char tS) : inputName(iN), outputName(oN), templateSign(tS)//currentword.file == this
+TemplateFile::TemplateFile(std::string iN, std::string oN, char tS) : inputName(iN), outputName(oN), templateSign(tS)//currentword.file == this
 {
+	goodbit = 1;
 	input.open(inputName);
 	if (!input.good())
 	{
-		std::cerr << "Blad otwarcia pliku " << inputName << std::endl;;
 		goodbit = 0;
 	}
 	output.open(outputName);
 	if (!output.good())
 	{
-		std::cerr << "Blad utworzenia pliku " << outputName << std::endl;
 		goodbit = 0;
 	}
 }
@@ -24,6 +23,7 @@ TemplateFile::~TemplateFile()
 void TemplateFile::loadLine()
 {
 	getline(input, word);
+	std::cin.ignore();
 	int i = 0;
 	int j = 0;
 	while (j < word.size())
@@ -68,6 +68,7 @@ void TemplateFile::replace(int from, int to)
 	std::string newString;
 	getline(std::cin, newString);
 	output << newString;
+	std::cout << std::endl;
 }
 
 void TemplateFile::loadFile()

@@ -17,7 +17,7 @@ class TemplateFile
 	void replace(int from, int to);
 public:
 	void loadFile();
-	TemplateFile(std::string iN, std::string oN, const char tS = '*');
+	TemplateFile(std::string iN, std::string oN, char tS = '*');
 	~TemplateFile();
 	bool good();
 };
